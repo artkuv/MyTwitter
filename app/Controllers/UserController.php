@@ -6,9 +6,9 @@ use Framework\View;
 
 class UserController
 {
-    public function profile()
+    public function profile($userName)
     {
-        View::render('profile');
+        View::render('profile', ['userName' => $userName]);
     }
 
     public function feed()

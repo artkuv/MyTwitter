@@ -13,6 +13,6 @@ Router::group(['namespace' => '\App\Controllers'], function () {
     Router::get('/register','RegisterController@register');
     Router::get('/login','RegisterController@login');
     Router::get('/login/forgotpass','RegisterController@forgotpass');
-    Router::get('/profile','UserController@profile');
+    Router::get('/profile/{userName}','UserController@profile');
     Router::get('/feed','UserController@feed');
 });
