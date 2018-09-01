@@ -15,9 +15,4 @@ class TestController
     {
         return 'Hello ' . $userName;
     }
-
-    public function error404()
-    {
-        View::render('404');
-    }
 }

@@ -10,19 +10,4 @@ class RegisterController
     {
         View::render('register');
     }
-    
-    public function login()
-    {
-        View::render('login');
-    }
-
-    public function forgotpass()
-    {
-        View::render('forgot-password');
-    }
-    
-    public function empty()
-    {
-        View::render('empty');
-    }
 }
