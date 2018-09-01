@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eb967e140a7415b79a2294ec87fb9ca",
+    "content-hash": "360e9d84ca01f871b7c5d0d151800624",
     "packages": [
         {
             "name": "jeremeamia/SuperClosure",
@@ -587,6 +587,34 @@
                 "shim"
             ],
             "time": "2018-08-06T14:22:27+00:00"
+        },
+        {
+            "name": "tabler/tabler",
+            "version": "v0.0.32",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tabler/tabler.git",
+                "reference": "a811ad1489360d0d443d9e8a0d1a0c292777c4a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tabler/tabler/zipball/a811ad1489360d0d443d9e8a0d1a0c292777c4a6",
+                "reference": "a811ad1489360d0d443d9e8a0d1a0c292777c4a6",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "codecalm",
+                    "email": "codecalm@gmail.com"
+                }
+            ],
+            "description": "Premium and Open Source dashboard template with responsive and high quality UI. For Free!",
+            "time": "2018-04-16T07:29:07+00:00"
         },
         {
             "name": "twig/twig",

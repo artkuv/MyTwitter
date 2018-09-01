@@ -1,7 +1,8 @@
 {
     "require": {
         "twig/twig": "^2.5",
-        "pecee/simple-router": "4.2.0.5"
+        "pecee/simple-router": "4.2.0.5",
+        "tabler/tabler": "^0.0.32"
     },
     "autoload": {
     	"psr-4": {

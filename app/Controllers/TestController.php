@@ -6,9 +6,9 @@ use Framework\View;
 
 class TestController
 {
-    public function test()
+    public function welcome()
     {
-        return 'Hello Doge!';
+        View::render('welcome');
     }
 
     public function hello($userName = 'Doge')
@@ -16,8 +16,8 @@ class TestController
         return 'Hello ' . $userName;
     }
 
-    public function view($userName = 'Artem')
+    public function error404()
     {
-        View::render('test', ['userName' => $userName]);
+        View::render('404');
     }
 }
