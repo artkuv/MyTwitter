@@ -1,4 +1,5 @@
 {
+    "ext-mysqli":"*",
     "require": {
         "twig/twig": "^2.5",
         "pecee/simple-router": "4.2.0.5",

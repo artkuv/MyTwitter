@@ -217,17 +217,17 @@
     },
     {
         "name": "php-di/php-di",
-        "version": "6.0.3",
-        "version_normalized": "6.0.3.0",
+        "version": "6.0.4",
+        "version_normalized": "6.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/PHP-DI/PHP-DI.git",
-            "reference": "61ef5c9fcbf04c8504a46d20bd27ea608eab7864"
+            "reference": "2c7a3a6b7b6c5dbe299a7a0cde386cea5d095eb3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/61ef5c9fcbf04c8504a46d20bd27ea608eab7864",
-            "reference": "61ef5c9fcbf04c8504a46d20bd27ea608eab7864",
+            "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/2c7a3a6b7b6c5dbe299a7a0cde386cea5d095eb3",
+            "reference": "2c7a3a6b7b6c5dbe299a7a0cde386cea5d095eb3",
             "shasum": ""
         },
         "require": {
@@ -253,7 +253,7 @@
             "doctrine/annotations": "Install it if you want to use annotations (version ~1.2)",
             "ocramius/proxy-manager": "Install it if you want to use lazy injection (version ~2.0)"
         },
-        "time": "2018-08-25T22:21:38+00:00",
+        "time": "2018-08-31T21:13:20+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
