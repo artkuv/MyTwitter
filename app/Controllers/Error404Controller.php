@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Framework\View;
 
-class Error404Controller
+class ErrorsController
 {
     public function error404()
     {
