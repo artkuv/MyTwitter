@@ -71,9 +71,9 @@ require_once 'layout/menu.php';
                     <div class="form-group mb-0">
                         <label class="form-label">About Me</label>
                         <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Oh so, your weak rhyme
-                            You doubt I'll bother, reading into it
-                            I'll probably won't, left to my own devices
-                        But that's the difference in our opinions.</textarea>
+You doubt I'll bother, reading into it
+I'll probably won't, left to my own devices
+But that's the difference in our opinions.</textarea>
                     </div>
                 </div>
             </div>
