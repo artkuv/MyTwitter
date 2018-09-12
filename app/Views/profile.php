@@ -15,7 +15,7 @@
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 
-	<link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
 
 	<title>Profile</title>
