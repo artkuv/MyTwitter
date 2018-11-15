@@ -73,6 +73,10 @@ class User extends Model
         ]);
     }
 
+    //UPDATE <table_name>
+    //SET <col_name1> = <value1>, <col_name2> = <value2>, ...
+    //WHERE <condition>; 
+
     protected static function hashPassword(string $password): string
     {
         return password_hash($password, PASSWORD_DEFAULT);
