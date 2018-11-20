@@ -1,6 +1,7 @@
 <?php
-
 namespace App\Models;
+
+require "../../framework/Model.php";
 
 use PDO;
 
@@ -85,4 +86,5 @@ class User extends Model
 
 $user = new User();
 
-var_dump($user->getAll());
+// $cls = static::getAll();
+// var_dump($cls);
