@@ -7,17 +7,22 @@ $password = 'root';
 
 $connection = new PDO($dsn, $user, $password);
 
-$stmt = $connection->query('SELECT * FROM users');
+$getAll = $connection->query('SELECT * FROM users');
 
-// $statement = $connection->prepare("SELECT * FROM `users` WHERE email = :email");
-// $statement->execute([
-//     ':email' => $_GET['email']
-// ]);
+$result = $getAll->fetchAll(PDO::FETCH_ASSOC);
+var_dump($result);
 
-// $statement = $connection->prepare('SELECT * FROM `users` WHERE id = :id;');
-// $statement->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-// $statement->execute();
+$getByEmail = $connection->prepare("SELECT * FROM `users` WHERE email = :email");
+$getByEmail->execute([
+    ':email' => $_GET['email']
+]);
 
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$result = $getByEmail->fetch(PDO::FETCH_ASSOC);
+var_dump($result);
 
+$getById = $connection->prepare('SELECT * FROM `users` WHERE id = :id;');
+$getById->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+$getById->execute();
+
+$result = $getById->fetch(PDO::FETCH_ASSOC);
 var_dump($result);
