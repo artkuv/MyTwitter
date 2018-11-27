@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+require "../../framework/Model.php";
+
 use PDO;
 
 use Framework\Model;
@@ -12,15 +14,6 @@ class Tweets extends Model
     {
         $stmt = static::db()->prepare('SELECT * FROM tweets WHERE content = :content');
         $stmt->execute([':content' => $content]);
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public static function getByFollowsID(string $date_created): array
-    {
-        $stmt = static::db()->prepare('SELECT * FROM tweets WHERE date_created = :date_created');
-        $stmt->bindParam(':date_created', $_GET['date_created'], PDO::PARAM_INT);
-        $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -48,7 +41,3 @@ class Tweets extends Model
         ]);
     }
 }
-
-$follower = new Follower();
-
-var_dump($follower->getAll());

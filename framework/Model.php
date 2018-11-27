@@ -3,7 +3,11 @@
 namespace Framework;
 
 use PDO;
+?>
 
+<pre>
+
+<?php 
 abstract class Model 
 {
     static protected $db;
@@ -12,8 +16,13 @@ abstract class Model
     {
         if (null === static::$db) 
         {
-            $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . 'dbname=' . DB_NAME;
-            static::$db = new PDO($dsn, DB_USER, DB_PASS);
+            // $dsn = 'mysql:dbname=' . DB_NAME . 'host=' . DB_HOST . ';port=' . DB_PORT;
+            // static::$db = new PDO($dsn, DB_USER, DB_PASS);
+            $dsn = 'mysql:dbname=mytwitter;host=localhost;port=3306';
+            $user = 'root';
+            $password = 'root';
+
+            static::$db = new PDO($dsn, $user, $password);
 
             // Включаем режим отображения ошибок в PDO
             static::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,7 +33,7 @@ abstract class Model
 
     public static function getAll(string $dbname): array
     {
-        $stmt = static::db()->query('SELECT * FROM $dbname');
+        $stmt = static::db()->query('SELECT * FROM ' . $dbname);
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
