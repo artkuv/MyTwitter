@@ -31,18 +31,14 @@ class Follower extends Model
         ]);
     }
 
-    public static function delete(array $params): bool
+    public static function deleteByUserId(array $params): bool
     {
         $sql = 'DELETE FROM followers 
-                WHERE `followers`.`id` = id
-                OR `followers`.`user_id` = user_id
-                OR `followers`.`follows_user_id` = follows_user_id';
+                WHERE `followers`.`user_id` = user_id';
         $stmt = static::db()->prepare($sql);
 
         return $stmt->execute([
-            ':id' => $params['id'],
             ':user_id' => $params['user_id'],
-            ':follows_user_id' => $params['follows_user_id'],
         ]);
     }
 }
@@ -59,5 +55,5 @@ $follower->create($newArray);
 var_dump($follower->getAll('followers'));
 
 $arrayName = array('id' => '3');
-$follower->delete($arrayName);
+$follower->deleteByUserId($arrayName);
 var_dump($follower->getAll('followers'));
