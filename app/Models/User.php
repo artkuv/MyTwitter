@@ -100,5 +100,13 @@ class User extends Model
  
 $user = new User();
  
-// $cls = static::getAll();
-// var_dump($cls);
+$cls = $user->getAll('users');
+var_dump($cls);
+
+$arrayName = array(
+    'email' => 'alds@gmail.com', 
+    'name' => 'alan',
+    'password' => 'sadk213k',
+);
+$cls = $user->update($arrayName,'users',0);
+var_dump($cls);

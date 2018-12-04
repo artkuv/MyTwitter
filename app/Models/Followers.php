@@ -34,7 +34,7 @@ class Follower extends Model
     public static function deleteByUserId(array $params): bool
     {
         $sql = 'DELETE FROM followers 
-                WHERE `followers`.`user_id` = user_id';
+                WHERE `followers`.`user_id` = :user_id';
         $stmt = static::db()->prepare($sql);
 
         return $stmt->execute([
@@ -47,13 +47,15 @@ $follower = new Follower();
 
 var_dump($follower->getAll('followers'));
 
+
 $newArray = [
-    "user_id" => "23424",
+    "user_id" => "3",
     "follows_user_id" => "35943"
 ];
 $follower->create($newArray);
-var_dump($follower->getAll('followers'));
+echo '<br>';
+var_dump($follower->getByUserId('followers'));
 
-$arrayName = array('id' => '3');
+$arrayName = array('user_id' => '3');
 $follower->deleteByUserId($arrayName);
 var_dump($follower->getAll('followers'));
