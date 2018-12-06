@@ -40,11 +40,11 @@ abstract class Model
 
     public static function getByID(string $dbname): array
     {
-        $stmt = static::db()->prepare('SELECT * FROM $dbname WHERE id = :id');
+        $stmt = static::db()->prepare('SELECT * FROM ' . $dbname . ' WHERE id = :id');
         $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function getByUserID(string $dbname): array

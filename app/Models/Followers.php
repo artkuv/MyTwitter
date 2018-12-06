@@ -41,12 +41,16 @@ class Follower extends Model
             ':user_id' => $params['user_id'],
         ]);
     }
+
+    public static function update(array $params):  bool
+    {
+        
+    }
 }
 
 $follower = new Follower();
 
 var_dump($follower->getAll('followers'));
-
 
 $newArray = [
     "user_id" => "3",
