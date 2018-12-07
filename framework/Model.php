@@ -55,4 +55,26 @@ abstract class Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function deleteById(string $dbname, array $params): bool
+    {
+        $sql = 'DELETE FROM ' . $dbname . 
+                ' WHERE `' . $dbname . '`.`user_id` = :user_id';
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute([
+            ':user_id' => $params['user_id'],
+        ]);
+    }
+
+    public static function deleteByUserId(string $dbname, array $params): bool
+    {
+        $sql = 'DELETE FROM ' . $dbname . 
+                ' WHERE `' . $dbname . '`.`user_id` = :user_id';
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute([
+            ':user_id' => $params['user_id'],
+        ]);
+    }
 }

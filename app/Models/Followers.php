@@ -31,20 +31,22 @@ class Follower extends Model
         ]);
     }
 
-    public static function deleteByUserId(array $params): bool
+    public static function update(array $params, string $dbname, int $id): bool
     {
-        $sql = 'DELETE FROM followers 
-                WHERE `followers`.`user_id` = :user_id';
+        $sql = 'UPDATE :dbname
+                SET :dbname.`email` = :email, 
+                WHERE :dbname.`id` = :id'; 
         $stmt = static::db()->prepare($sql);
-
+    
         return $stmt->execute([
-            ':user_id' => $params['user_id'],
+            'id' => $id,
+            ':dbname' => $dbname,
+            ':email' => $params['email'],
+            ':name' => $params['name'],
+            ':password' => self::hashPassword($params['password']),
+            ':registered' => time(),
+            ':last_login' => time(),
         ]);
-    }
-
-    public static function update(array $params):  bool
-    {
-        
     }
 }
 
@@ -61,5 +63,5 @@ echo '<br>';
 var_dump($follower->getByUserId('followers'));
 
 $arrayName = array('user_id' => '3');
-$follower->deleteByUserId($arrayName);
+$follower->deleteByUserId('followers', $arrayName);
 var_dump($follower->getAll('followers'));

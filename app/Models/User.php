@@ -92,6 +92,11 @@ class User extends Model
         ]);
     }
 
+    public static function update(array $params): bool
+    {
+      
+    }
+
     protected static function hashPassword(string $password): string
     {
         return password_hash($password, PASSWORD_DEFAULT);
