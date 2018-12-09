@@ -12,7 +12,7 @@ class Follower extends Model
 {
     public static function getByFollowsID(string $followsid): array
     {
-        $stmt = static::db()->prepare('SELECT * FROM follows WHERE follows_user_id = :follows_user_id');
+        $stmt = static::db()->prepare('SELECT * FROM followers WHERE follows_user_id = :follows_user_id');
         $stmt->bindParam(':follows_user_id', $_GET['follows_user_id'], PDO::PARAM_INT);
         $stmt->execute();
 
@@ -31,22 +31,14 @@ class Follower extends Model
         ]);
     }
 
-    public static function update(array $params, string $dbname, int $id): bool
+    public static function update(int $follows, int $user_id): bool
     {
-        $sql = 'UPDATE :dbname
-                SET :dbname.`email` = :email, 
-                WHERE :dbname.`id` = :id'; 
+        $sql = 'UPDATE followers
+                SET `followers`.`follows_user_id` = ' . $follows . 
+                ' WHERE followers.user_id = ' . $user_id; 
         $stmt = static::db()->prepare($sql);
     
-        return $stmt->execute([
-            'id' => $id,
-            ':dbname' => $dbname,
-            ':email' => $params['email'],
-            ':name' => $params['name'],
-            ':password' => self::hashPassword($params['password']),
-            ':registered' => time(),
-            ':last_login' => time(),
-        ]);
+        return $stmt->execute();
     }
 }
 
@@ -64,4 +56,8 @@ var_dump($follower->getByUserId('followers'));
 
 $arrayName = array('user_id' => '3');
 $follower->deleteByUserId('followers', $arrayName);
+var_dump($follower->getAll('followers'));
+
+echo '<br>';
+$follower->update(23456,2);
 var_dump($follower->getAll('followers'));
