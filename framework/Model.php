@@ -59,22 +59,20 @@ abstract class Model
     public static function deleteById(string $dbname, array $params): bool
     {
         $sql = 'DELETE FROM ' . $dbname . 
-                ' WHERE `' . $dbname . '`.`user_id` = :user_id';
+                ' WHERE `' . $dbname . '`.`id` = :id';
         $stmt = static::db()->prepare($sql);
 
         return $stmt->execute([
-            ':user_id' => $params['user_id'],
+            ':id' => $params['id'],
         ]);
     }
 
-    public static function deleteByUserId(string $dbname, array $params): bool
+    public static function deleteByUserId(string $dbname, string $user_id): bool
     {
         $sql = 'DELETE FROM ' . $dbname . 
-                ' WHERE `' . $dbname . '`.`user_id` = :user_id';
+                ' WHERE `' . $dbname . '`.`user_id` = ' . $user_id;
         $stmt = static::db()->prepare($sql);
 
-        return $stmt->execute([
-            ':user_id' => $params['user_id'],
-        ]);
+        return $stmt->execute();
     }
 }

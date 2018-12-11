@@ -61,31 +61,14 @@ class User extends Model
  
     public static function create(array $params): bool
     {
-        $sql = 'INSERT INTO users (email, name, password, registered, last_login) 
-                VALUES (:email, :name, :password, :registered, :last_login)';
+        $sql = 'INSERT INTO users (email, password, name, user_id, registered, last_login) 
+                VALUES (:email, :password, :name, :user_id, :registered, :last_login)';
         $stmt = static::db()->prepare($sql);
  
         return $stmt->execute([
             ':email' => $params['email'],
             ':name' => $params['name'],
-            ':password' => self::hashPassword($params['password']),
-            ':registered' => time(),
-            ':last_login' => time(),
-        ]);
-    }
-
-    public static function update(array $params, string $dbname, int $id): bool
-    {
-        $sql = 'UPDATE :dbname
-                SET :dbname.`email` = :email, 
-                WHERE :dbname.`id` = :id'; 
-        $stmt = static::db()->prepare($sql);
-    
-        return $stmt->execute([
-            'id' => $id,
-            ':dbname' => $dbname,
-            ':email' => $params['email'],
-            ':name' => $params['name'],
+            ':user_id' => $params['user_id'],
             ':password' => self::hashPassword($params['password']),
             ':registered' => time(),
             ':last_login' => time(),
@@ -94,7 +77,19 @@ class User extends Model
 
     public static function update(array $params): bool
     {
-      
+        $sql = 'UPDATE users
+                SET users.`email` = :email,
+                users.`name` = :name,
+                users.`password` = :password 
+                WHERE `users`.`user_id` = :user_id'; 
+        $stmt = static::db()->prepare($sql);
+    
+        return $stmt->execute([
+            ':user_id' => $params['user_id'],
+            ':email' => $params['email'],
+            ':name' => $params['name'],
+            ':password' => self::hashPassword($params['password'])
+        ]);
     }
 
     protected static function hashPassword(string $password): string
@@ -108,10 +103,22 @@ $user = new User();
 $cls = $user->getAll('users');
 var_dump($cls);
 
+$array = array(
+    'email' => 'asfk@gmail.com',
+    'name' => 'evgen',
+    'user_id' => '3',
+    'password' => 'asd213ds'
+);
+$user->create($array);
+$user->getAll('users');
+
 $arrayName = array(
+    'user_id' => '3',
     'email' => 'alds@gmail.com', 
     'name' => 'alan',
     'password' => 'sadk213k',
 );
-$cls = $user->update($arrayName,'users',0);
-var_dump($cls);
+$user->update($arrayName);
+$user->getAll('users');
+
+//$user->deleteByUserId('users', '3');
