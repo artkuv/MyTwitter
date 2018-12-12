@@ -38,40 +38,32 @@ abstract class Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getByID(string $dbname): array
+    public static function getByID(string $dbname,int $id): array
     {
-        $stmt = static::db()->prepare('SELECT * FROM ' . $dbname . ' WHERE id = :id');
-        $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+        $stmt = static::db()->prepare('SELECT * FROM ' . $dbname . ' WHERE id = ' . $id);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getByUserID(string $dbname): array
+    public static function getByUserID(string $dbname, int $user_id): array
     {
-        $stmt = static::db()->prepare('SELECT * FROM ' . $dbname . ' WHERE user_id = :user_id');
-        $stmt->bindParam(':user_id', $_GET['user_id'], PDO::PARAM_INT);
+        $stmt = static::db()->prepare('SELECT * FROM ' . $dbname . ' WHERE user_id = ' . $user_id);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function deleteById(string $dbname, array $params): bool
+    public static function deleteById(string $dbname, int $id): bool
     {
-        $sql = 'DELETE FROM ' . $dbname . 
-                ' WHERE `' . $dbname . '`.`id` = :id';
-        $stmt = static::db()->prepare($sql);
+        $stmt = static::db()->prepare('DELETE FROM ' . $dbname . ' WHERE id = ' . $id);
 
-        return $stmt->execute([
-            ':id' => $params['id'],
-        ]);
+        return $stmt->execute();
     }
 
-    public static function deleteByUserId(string $dbname, string $user_id): bool
+    public static function deleteByUserId(string $dbname, int $user_id): bool
     {
-        $sql = 'DELETE FROM ' . $dbname . 
-                ' WHERE `' . $dbname . '`.`user_id` = ' . $user_id;
-        $stmt = static::db()->prepare($sql);
+        $stmt = static::db()->prepare('DELETE FROM ' . $dbname . ' WHERE user_id = ' . $user_id);
 
         return $stmt->execute();
     }

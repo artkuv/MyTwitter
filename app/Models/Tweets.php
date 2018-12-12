@@ -50,32 +50,40 @@ class Tweets extends Model
         ]);
     }
 
-    public static function update(array $params, string $dbname, int $id): bool
+    public static function update(array $params): bool
     {
-        $sql = 'UPDATE :dbname
-                SET :dbname.`email` = :email, 
-                WHERE :dbname.`id` = :id'; 
+        $sql = 'UPDATE tweets
+                SET tweets.`content` = :content, 
+                tweets.`date_updated` = :date_updated 
+                WHERE tweets.`user_id` = :user_id'; 
         $stmt = static::db()->prepare($sql);
     
         return $stmt->execute([
-            'id' => $id,
-            ':dbname' => $dbname,
-            ':email' => $params['email'],
-            ':name' => $params['name'],
-            ':password' => self::hashPassword($params['password']),
-            ':registered' => time(),
-            ':last_login' => time(),
+            ':content' => $params['content'],
+            ':user_id' => $params['user_id'],
+            ':date_updated' => time(),
         ]);
     }
 }
 
 $tweet = new Tweets();
-var_dump($tweet->getAll('tweets'));
-echo "<br>";
+// var_dump($tweet->getAll('tweets'));
+// echo "<br>";
 
-$arrayName = array( 
-    'user_id' => '123',
-    'content' => 'smt new',
-);
-$tweet->create($arrayName);
-var_dump($tweet->getAll('tweets'));
+// $arrayName = array( 
+//     'user_id' => '2',
+//     'content' => 'smt new2',
+// );
+// $tweet->create($arrayName);
+
+// $array = array(
+//     'content' => 'hello',
+//     'user_id' => '1',
+// );
+// $tweet->update($array);
+// var_dump($tweet->getAll('tweets'));
+
+// $tweet->deleteByUserId('tweets',1);
+// var_dump($tweet->getAll('tweets'));
+
+// var_dump($tweet->getByUserId('tweets', 2));

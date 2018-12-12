@@ -80,7 +80,8 @@ class User extends Model
         $sql = 'UPDATE users
                 SET users.`email` = :email,
                 users.`name` = :name,
-                users.`password` = :password 
+                users.`password` = :password,
+                users.`last_login` = :last_login 
                 WHERE `users`.`user_id` = :user_id'; 
         $stmt = static::db()->prepare($sql);
     
@@ -88,6 +89,7 @@ class User extends Model
             ':user_id' => $params['user_id'],
             ':email' => $params['email'],
             ':name' => $params['name'],
+            'last_login' => time(),
             ':password' => self::hashPassword($params['password'])
         ]);
     }
@@ -100,25 +102,24 @@ class User extends Model
  
 $user = new User();
  
-$cls = $user->getAll('users');
-var_dump($cls);
+// var_dump($user->getAll('users'));
 
-$array = array(
-    'email' => 'asfk@gmail.com',
-    'name' => 'evgen',
-    'user_id' => '3',
-    'password' => 'asd213ds'
-);
-$user->create($array);
-$user->getAll('users');
+// $array = array(
+//     'email' => 'asfk@gmail.com',
+//     'name' => 'evgen',
+//     'user_id' => '3',
+//     'password' => 'asd213ds'
+// );
+// $user->create($array);
+// var_dump($user->getAll('users'));
 
-$arrayName = array(
-    'user_id' => '3',
-    'email' => 'alds@gmail.com', 
-    'name' => 'alan',
-    'password' => 'sadk213k',
-);
-$user->update($arrayName);
-$user->getAll('users');
+// $arrayName = array(
+//     'user_id' => '3',
+//     'email' => 'alds@gmail.com', 
+//     'name' => 'alan',
+//     'password' => 'sadk213k',
+// );
+// $user->update($arrayName);
+// var_dump($user->getAll('users'));
 
-//$user->deleteByUserId('users', '3');
+// $user->deleteByUserId('users', '3');

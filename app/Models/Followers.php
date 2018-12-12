@@ -44,20 +44,19 @@ class Follower extends Model
 
 $follower = new Follower();
 
-var_dump($follower->getAll('followers'));
+// var_dump($follower->getAll('followers'));
 
-$newArray = [
-    "user_id" => "3",
-    "follows_user_id" => "35943"
-];
-$follower->create($newArray);
-echo '<br>';
-var_dump($follower->getByUserId('followers'));
+// $newArray = [
+//     "user_id" => "2",
+//     "follows_user_id" => "35943"
+// ];
+// $follower->create($newArray);
+// echo '<br>';
+// var_dump($follower->getByUserId('followers',2));
 
-$arrayName = array('user_id' => '3');
-$follower->deleteByUserId('followers', $arrayName);
-var_dump($follower->getAll('followers'));
+// $follower->deleteByUserId('followers', 3);
+// var_dump($follower->getAll('followers'));
 
-echo '<br>';
-$follower->update(23456,2);
-var_dump($follower->getAll('followers'));
+// echo '<br>';
+// $follower->update(23456,2);
+// var_dump($follower->getAll('followers'));
