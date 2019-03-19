@@ -16,7 +16,7 @@ abstract class Model
     {
         if (null === static::$db) 
         {
-            // $dsn = 'mysql:dbname=' . DB_NAME . 'host=' . DB_HOST . ';port=' . DB_PORT;
+            // $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';port=' . DB_PORT;
             // static::$db = new PDO($dsn, DB_USER, DB_PASS);
             $dsn = 'mysql:dbname=mytwitter;host=localhost;port=3306';
             $user = 'root';
